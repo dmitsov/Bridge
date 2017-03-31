@@ -55,7 +55,8 @@
                     "getValues", "System$Collections$IDictionary$getValues",
                     "IsReadOnly", "System$Collections$IDictionary$IsReadOnly",
                     "Keys", "System$Collections$IDictionary$Keys",
-                    "Values", "System$Collections$IDictionary$Values"
+                    "Values", "System$Collections$IDictionary$Values",
+                    "get", "System$Collections$Generic$IReadOnlyDictionary$2$" + Bridge.getTypeAlias(TKey) + "$" + Bridge.getTypeAlias(TValue) + "$getItem"
                 ]
             },
 

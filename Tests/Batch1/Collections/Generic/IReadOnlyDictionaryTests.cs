@@ -225,5 +225,37 @@ namespace Bridge.ClientTest.Collections.Generic
             Assert.False(di.TryGetValue(32, out outVal));
             Assert.AreEqual(null, outVal);
         }
+
+        public class Person
+        {
+            public string Name
+            {
+                get; set;
+            }
+            public int Age
+            {
+                get; set;
+            }
+
+            public IReadOnlyDictionary<string, object> ToDict()
+            {
+                return new Dictionary<string, object>
+                {
+                    {nameof(Name), Name},
+                    {nameof(Age), Age}
+                };
+            }
+        }
+
+        [Test]
+        public void UsersTestCase_1626_Works()
+        {
+            var p = new Person() { Name = "Donald", Age = 27 };
+
+            var d = p.ToDict();
+
+            Assert.AreEqual("Donald", d["Name"]);
+            Assert.AreEqual(27, d["Age"]);
+        }
     }
 }

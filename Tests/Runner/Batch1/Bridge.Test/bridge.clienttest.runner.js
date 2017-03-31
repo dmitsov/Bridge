@@ -283,6 +283,7 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
             QUnit.test("IReadOnlyDictionary - ValuesWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.valuesWorks);
             QUnit.test("IReadOnlyDictionary - ContainsKeyWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.containsKeyWorks);
             QUnit.test("IReadOnlyDictionary - TryGetValueWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.tryGetValueWorks);
+            QUnit.test("IReadOnlyDictionary - UsersTestCase_1626_Works", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.usersTestCase_1626_Works);
             QUnit.test("IReadOnlyList - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.typePropertiesAreCorrect);
             QUnit.test("IReadOnlyList - ArrayImplementsIReadOnlyList", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.arrayImplementsIReadOnlyList);
             QUnit.test("IReadOnlyList - CustomClassThatShouldImplementIReadOnlyListDoesSo", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.customClassThatShouldImplementIReadOnlyListDoesSo);
@@ -12705,6 +12706,13 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
                     line: "209"
                 } ));
                 t.Fixture.tryGetValueWorks();
+            },
+            usersTestCase_1626_Works: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "UsersTestCase_1626_Works()",
+                    line: "246"
+                } ));
+                t.Fixture.usersTestCase_1626_Works();
             }
         },
         context: null,

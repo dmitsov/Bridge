@@ -1,6 +1,8 @@
     Bridge.define('System.Collections.Generic.Dictionary$2', function (TKey, TValue) {
         return {
-            inherits: [System.Collections.Generic.IDictionary$2(TKey, TValue), System.Collections.IDictionary],
+            inherits: [System.Collections.Generic.IDictionary$2(TKey, TValue),
+                System.Collections.IDictionary,
+                System.Collections.Generic.IReadOnlyDictionary$2(TKey, TValue)],
 
             config: {
                 properties: {

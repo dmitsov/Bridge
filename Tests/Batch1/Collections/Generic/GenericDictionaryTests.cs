@@ -29,6 +29,7 @@ namespace Bridge.ClientTest.Collections.Generic
             Assert.True(dict is Dictionary<int, string>, "is Dictionary<int,string> should be true");
             Assert.True(dict is IDictionary<int, string>, "is IDictionary<int,string> should be true");
             Assert.True(dict is IEnumerable<KeyValuePair<int, string>>, "is IEnumerable<KeyValuePair<int,string>> should be true");
+            Assert.True(dict is IReadOnlyDictionary<int, string>, "is IEnumerable<KeyValuePair<int,string>> should be true");
         }
 
         [Test]

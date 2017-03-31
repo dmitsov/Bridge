@@ -6342,6 +6342,7 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(dict, System.Collections.Generic.Dictionary$2(System.Int32,System.String)), "is Dictionary<int,string> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(dict, System.Collections.Generic.IDictionary$2(System.Int32,System.String)), "is IDictionary<int,string> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(dict, System.Collections.Generic.IEnumerable$1(System.Collections.Generic.KeyValuePair$2(System.Int32,System.String))), "is IEnumerable<KeyValuePair<int,string>> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(dict, System.Collections.Generic.IReadOnlyDictionary$2(System.Int32,System.String)), "is IEnumerable<KeyValuePair<int,string>> should be true");
         },
         defaultConstructorWorks: function () {
             var d = new (System.Collections.Generic.Dictionary$2(System.Int32,System.String))();
@@ -6861,6 +6862,7 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
         },
         classImplementsInterfaces: function () {
             Bridge.Test.NUnit.Assert.true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.ctor(), System.Collections.Generic.IDictionary$2(System.Int32,System.String)));
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.ctor(), System.Collections.Generic.IReadOnlyDictionary$2(System.Int32,System.String)), "#1626");
         },
         countWorks: function () {
             var d = new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.ctor();
@@ -6942,16 +6944,22 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
         },
         containsKeyWorks: function () {
             var d = new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Collections.Generic.IDictionaryTests.f5(new (System.Collections.Generic.Dictionary$2(System.Int32,System.String))()));
+            Bridge.Test.NUnit.Assert.true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.ctor(), System.Collections.Generic.IDictionary$2(System.Int32,System.String)));
+
+            var di = Bridge.cast(d, System.Collections.Generic.IReadOnlyDictionary$2(System.Int32,System.String));
             var di2 = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,System.String));
 
             Bridge.Test.NUnit.Assert.true(d.containsKey(9));
+            Bridge.Test.NUnit.Assert.true$1(di.System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$containsKey(6), "#1626");
             Bridge.Test.NUnit.Assert.true(di2.System$Collections$Generic$IDictionary$2$System$Int32$System$String$containsKey(3));
 
             Bridge.Test.NUnit.Assert.false(d.containsKey(923));
+            Bridge.Test.NUnit.Assert.false$1(di.System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$containsKey(6124), "#1626");
             Bridge.Test.NUnit.Assert.false(di2.System$Collections$Generic$IDictionary$2$System$Int32$System$String$containsKey(353));
         },
         tryGetValueWorks: function () {
             var d = new Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary.$ctor1($asm.$.Bridge.ClientTest.Collections.Generic.IDictionaryTests.f6(new (System.Collections.Generic.Dictionary$2(System.Int32,System.String))()));
+            var di = Bridge.cast(d, System.Collections.Generic.IReadOnlyDictionary$2(System.Int32,System.String));
             var di2 = Bridge.cast(d, System.Collections.Generic.IDictionary$2(System.Int32,System.String));
 
             var outVal = { };
@@ -6959,12 +6967,19 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true(d.tryGetValue(9, outVal));
             Bridge.Test.NUnit.Assert.areEqual("x", outVal.v);
 
+            Bridge.Test.NUnit.Assert.true$1(di.System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$tryGetValue(6, outVal), "#1626");
+            Bridge.Test.NUnit.Assert.areEqual$1("z", outVal.v, "#1626");
+
             Bridge.Test.NUnit.Assert.true(di2.System$Collections$Generic$IDictionary$2$System$Int32$System$String$tryGetValue(3, outVal));
             Bridge.Test.NUnit.Assert.areEqual("b", outVal.v);
 
             outVal.v = "!!!";
             Bridge.Test.NUnit.Assert.false(d.tryGetValue(923, outVal));
             Bridge.Test.NUnit.Assert.areEqual(null, outVal.v);
+
+            outVal.v = "!!!";
+            Bridge.Test.NUnit.Assert.false$1(di.System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$tryGetValue(6124, outVal), "#1626");
+            Bridge.Test.NUnit.Assert.areEqual$1(null, outVal.v, "#1626");
 
             outVal.v = "!!!";
             Bridge.Test.NUnit.Assert.false(di2.System$Collections$Generic$IDictionary$2$System$Int32$System$String$tryGetValue(353, outVal));
@@ -7089,11 +7104,21 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
     });
 
     Bridge.define("Bridge.ClientTest.Collections.Generic.IDictionaryTests.MyDictionary", {
-        inherits: [System.Collections.Generic.IDictionary$2(System.Int32,System.String)],
+        inherits: [System.Collections.Generic.IDictionary$2(System.Int32,System.String),System.Collections.Generic.IReadOnlyDictionary$2(System.Int32,System.String)],
         _backingDictionary: null,
         config: {
             properties: {
                 Keys: {
+                    get: function () {
+                        return this._backingDictionary.getKeys();
+                    }
+                },
+                System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$Values: {
+                    get: function () {
+                        return this._backingDictionary.getValues();
+                    }
+                },
+                System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$Keys: {
                     get: function () {
                         return this._backingDictionary.getKeys();
                     }
@@ -7116,17 +7141,22 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             },
             alias: [
             "getEnumerator", "System$Collections$Generic$IEnumerable$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$getEnumerator",
+            "getItem", "System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$getItem",
+            "setItem", "System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$setItem",
             "getItem", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$getItem",
             "setItem", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$setItem",
             "Keys", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$Keys",
             "Values", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$Values",
+            "Count", "System$Collections$Generic$IReadOnlyCollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$Count",
             "Count", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$Count",
             "IsReadOnly", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$IsReadOnly",
             "add", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$add",
             "copyTo", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$copyTo",
             "add$1", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$add",
             "remove$1", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$remove",
+            "containsKey", "System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$containsKey",
             "containsKey", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$containsKey",
+            "tryGetValue", "System$Collections$Generic$IReadOnlyDictionary$2$System$Int32$System$String$tryGetValue",
             "tryGetValue", "System$Collections$Generic$IDictionary$2$System$Int32$System$String$tryGetValue",
             "clear", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$clear",
             "contains", "System$Collections$Generic$ICollection$1$System$Collections$Generic$KeyValuePair$2$System$Int32$System$String$contains",

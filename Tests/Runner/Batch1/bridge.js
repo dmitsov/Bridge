@@ -11261,6 +11261,13 @@ Bridge.Class.addExtend(System.Boolean, [System.IComparable$1(System.Boolean), Sy
         };
     });
 
+    Bridge.define('System.Collections.Generic.IReadOnlyDictionary$2', function (TKey, TValue) {
+        return {
+            inherits: [System.Collections.Generic.IReadOnlyCollection$1(System.Collections.Generic.KeyValuePair$2(TKey, TValue))],
+            $kind: "interface"
+        };
+    });
+
     // @source CustomEnumerator.js
 
     Bridge.define('Bridge.CustomEnumerator', {

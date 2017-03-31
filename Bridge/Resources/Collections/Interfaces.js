@@ -87,3 +87,10 @@
             $kind: "interface"
         };
     });
+
+    Bridge.define('System.Collections.Generic.IReadOnlyDictionary$2', function (TKey, TValue) {
+        return {
+            inherits: [System.Collections.Generic.IReadOnlyCollection$1(System.Collections.Generic.KeyValuePair$2(TKey, TValue))],
+            $kind: "interface"
+        };
+    });

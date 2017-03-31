@@ -68,6 +68,9 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(arr, System.Collections.Generic.ICollection$1(System.Int32)), "is ICollection<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IEnumerable$1(System.Int32)), "is IEnumerable<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IList$1(System.Int32)), "is IList<int> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IReadOnlyCollection$1(System.Int32)), "is IReadOnlyCollection<int> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(arr, System.Collections.Generic.IReadOnlyList$1(System.Int32)), "is IReadOnlyList<int> should be true");
+
         },
         createWithNegativeLenghtShouldThrow: function () {
             var size = -1;

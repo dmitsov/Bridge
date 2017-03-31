@@ -190,14 +190,6 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
             QUnit.test("Array - Set2 TestValueTypeToReferenceCopy", Bridge.Test.Runtime.BridgeClientTestRunner.ArrayTestsSet2.testValueTypeToReferenceCopy);
             QUnit.test("Array - Set2 TestReferenceToValueTypeCopy", Bridge.Test.Runtime.BridgeClientTestRunner.ArrayTestsSet2.testReferenceToValueTypeCopy);
             QUnit.test("Array - Set2 TestArrayConstructionMultidimArrays", Bridge.Test.Runtime.BridgeClientTestRunner.ArrayTestsSet2.testArrayConstructionMultidimArrays);
-            QUnit.test("IReadOnlyDictionary - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.typePropertiesAreCorrect);
-            QUnit.test("IReadOnlyDictionary - ClassImplementsInterfaces", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.classImplementsInterfaces);
-            QUnit.test("IReadOnlyDictionary - CountWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.countWorks);
-            QUnit.test("IReadOnlyDictionary - KeysWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.keysWorks);
-            QUnit.test("IReadOnlyDictionary - GetItemWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.getItemWorks);
-            QUnit.test("IReadOnlyDictionary - ValuesWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.valuesWorks);
-            QUnit.test("IReadOnlyDictionary - ContainsKeyWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.containsKeyWorks);
-            QUnit.test("IReadOnlyDictionary - TryGetValueWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.tryGetValueWorks);
             QUnit.test("GenericDictionary - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.GenericDictionaryTests.typePropertiesAreCorrect);
             QUnit.test("GenericDictionary - DefaultConstructorWorks", Bridge.Test.Runtime.BridgeClientTestRunner.GenericDictionaryTests.defaultConstructorWorks);
             QUnit.test("GenericDictionary - CapacityConstructorWorks", Bridge.Test.Runtime.BridgeClientTestRunner.GenericDictionaryTests.capacityConstructorWorks);
@@ -276,6 +268,21 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
             QUnit.test("IList - ClassImplementingIListCastToIListRemoveAtWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IListTests.classImplementingIListCastToIListRemoveAtWorks);
             QUnit.test("IList - ClassImplementingIListCopyToWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IListTests.classImplementingIListCopyToWorks);
             QUnit.test("IList - ClassImplementingIListCastToIListCopyToWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IListTests.classImplementingIListCastToIListCopyToWorks);
+            QUnit.test("IReadOnlyCollection - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.typePropertiesAreCorrect);
+            QUnit.test("IReadOnlyCollection - ArrayImplementsIReadOnlyCollection", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.arrayImplementsIReadOnlyCollection);
+            QUnit.test("IReadOnlyCollection - CustomClassThatShouldImplementIReadOnlyCollectionDoesSo", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.customClassThatShouldImplementIReadOnlyCollectionDoesSo);
+            QUnit.test("IReadOnlyCollection - ArrayCastToIReadOnlyCollectionCountWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.arrayCastToIReadOnlyCollectionCountWorks);
+            QUnit.test("IReadOnlyCollection - ClassImplementingICollectionCastToIReadOnlyCollectionCountWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.classImplementingICollectionCastToIReadOnlyCollectionCountWorks);
+            QUnit.test("IReadOnlyCollection - ArrayCastToIReadOnlyCollectionContainsWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.arrayCastToIReadOnlyCollectionContainsWorks);
+            QUnit.test("IReadOnlyCollection - ClassImplementingICollectionCastToIReadOnlyCollectionContainsWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests.classImplementingICollectionCastToIReadOnlyCollectionContainsWorks);
+            QUnit.test("IReadOnlyDictionary - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.typePropertiesAreCorrect);
+            QUnit.test("IReadOnlyDictionary - ClassImplementsInterfaces", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.classImplementsInterfaces);
+            QUnit.test("IReadOnlyDictionary - CountWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.countWorks);
+            QUnit.test("IReadOnlyDictionary - KeysWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.keysWorks);
+            QUnit.test("IReadOnlyDictionary - GetItemWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.getItemWorks);
+            QUnit.test("IReadOnlyDictionary - ValuesWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.valuesWorks);
+            QUnit.test("IReadOnlyDictionary - ContainsKeyWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.containsKeyWorks);
+            QUnit.test("IReadOnlyDictionary - TryGetValueWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.tryGetValueWorks);
             QUnit.test("IteratorBlock - TypeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.typeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable);
             QUnit.test("IteratorBlock - EnumeratingIEnumeratorIteratorToEndWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.enumeratingIEnumeratorIteratorToEndWorks);
             QUnit.test("IteratorBlock - PrematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.prematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks);
@@ -12568,60 +12575,126 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
         }
     });
 
-    Bridge.define("Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests", {
-        inherits: [Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests)],
+    Bridge.define("Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests", {
+        inherits: [Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests)],
         statics: {
             typePropertiesAreCorrect: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "TypePropertiesAreCorrect()",
+                    line: "70"
+                } ));
+                t.Fixture.typePropertiesAreCorrect();
+            },
+            arrayImplementsIReadOnlyCollection: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ArrayImplementsIReadOnlyCollection()",
+                    line: "82"
+                } ));
+                t.Fixture.arrayImplementsIReadOnlyCollection();
+            },
+            customClassThatShouldImplementIReadOnlyCollectionDoesSo: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "CustomClassThatShouldImplementIReadOnlyCollectionDoesSo()",
+                    line: "88"
+                } ));
+                t.Fixture.customClassThatShouldImplementIReadOnlyCollectionDoesSo();
+            },
+            arrayCastToIReadOnlyCollectionCountWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ArrayCastToIReadOnlyCollectionCountWorks()",
+                    line: "94"
+                } ));
+                t.Fixture.arrayCastToIReadOnlyCollectionCountWorks();
+            },
+            classImplementingICollectionCastToIReadOnlyCollectionCountWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ClassImplementingICollectionCastToIReadOnlyCollectionCountWorks()",
+                    line: "104"
+                } ));
+                t.Fixture.classImplementingICollectionCastToIReadOnlyCollectionCountWorks();
+            },
+            arrayCastToIReadOnlyCollectionContainsWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ArrayCastToIReadOnlyCollectionContainsWorks()",
+                    line: "110"
+                } ));
+                t.Fixture.arrayCastToIReadOnlyCollectionContainsWorks();
+            },
+            classImplementingICollectionCastToIReadOnlyCollectionContainsWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyCollectionTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ClassImplementingICollectionCastToIReadOnlyCollectionContainsWorks()",
+                    line: "118"
+                } ));
+                t.Fixture.classImplementingICollectionCastToIReadOnlyCollectionContainsWorks();
+            }
+        },
+        context: null,
+        getContext: function () {
+            if (this.context == null) {
+                this.context = Bridge.merge(new Bridge.Test.Runtime.FixtureContext(), {
+                    project: "Batch1",
+                    className: "Bridge.ClientTest.Collections.Generic.IReadOnlyCollectionTests",
+                    file: "Batch1\\Collections\\Generic\\IReadOnlyCollectionTests.cs"
+                } );
+            }
+            return this.context;
+        }
+    });
+
+    Bridge.define("Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests", {
+        inherits: [Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests)],
+        statics: {
+            typePropertiesAreCorrect: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "TypePropertiesAreCorrect()",
                     line: "80"
                 } ));
                 t.Fixture.typePropertiesAreCorrect();
             },
             classImplementsInterfaces: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "ClassImplementsInterfaces()",
                     line: "93"
                 } ));
                 t.Fixture.classImplementsInterfaces();
             },
             countWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "CountWorks()",
                     line: "99"
                 } ));
                 t.Fixture.countWorks();
             },
             keysWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "KeysWorks()",
                     line: "109"
                 } ));
                 t.Fixture.keysWorks();
             },
             getItemWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "GetItemWorks()",
                     line: "138"
                 } ));
                 t.Fixture.getItemWorks();
             },
             valuesWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "ValuesWorks()",
                     line: "166"
                 } ));
                 t.Fixture.valuesWorks();
             },
             containsKeyWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "ContainsKeyWorks()",
                     line: "196"
                 } ));
                 t.Fixture.containsKeyWorks();
             },
             tryGetValueWorks: function (assert) {
-                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
                     method: "TryGetValueWorks()",
                     line: "209"
                 } ));
@@ -12633,7 +12706,7 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
             if (this.context == null) {
                 this.context = Bridge.merge(new Bridge.Test.Runtime.FixtureContext(), {
                     project: "Batch1",
-                    className: "Bridge.ClientTest.Batch4.Collections.Generic.IReadOnlyDictionaryTests",
+                    className: "Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests",
                     file: "Batch1\\Collections\\Generic\\IReadOnlyDictionaryTests.cs"
                 } );
             }

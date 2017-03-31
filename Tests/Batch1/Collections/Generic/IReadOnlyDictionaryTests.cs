@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Bridge.ClientTest.Batch4.Collections.Generic
+namespace Bridge.ClientTest.Collections.Generic
 {
     [Category(Constants.MODULE_ICOLLECTION)]
     [TestFixture(TestNameFormat = "IReadOnlyDictionary - {0}")]

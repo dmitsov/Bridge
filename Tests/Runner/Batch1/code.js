@@ -9251,6 +9251,7 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IList$1(System.Int32)), "is IList<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.ICollection$1(System.Int32)), "is ICollection<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IEnumerable$1(System.Int32)), "is IEnumerable<int> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IReadOnlyCollection$1(System.Int32)), "is IReadOnlyCollection<int> should be true");
         },
         constructorWorks: function () {
             var l = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.Int32))(System.Array.init([41, 42, 43], System.Int32));
@@ -9501,6 +9502,36 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
         iListIsReadOnlyWorks: function () {
             var l = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(0, null, System.String));
             Bridge.Test.NUnit.Assert.true(System.Array.getIsReadOnly(l, System.String));
+        },
+        iReadOnlyCollectionCountWorks: function () {
+            var l = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(["x", "y", "z"], System.String));
+            Bridge.Test.NUnit.Assert.areEqual(3, System.Array.getCount(l, System.String));
+        },
+        iReadOnlyCollectionGetEnumeratorWorks: function () {
+            var l = Bridge.cast(new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(["x", "y"], System.String)), System.Collections.Generic.IReadOnlyCollection$1(System.String));
+            var e = Bridge.getEnumerator(l, System.String);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("y", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.false(e.System$Collections$IEnumerator$moveNext());
+        },
+        iReadOnlyListIndexingWorks: function () {
+            var l = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(["x", "y", "z"], System.String));
+            Bridge.Test.NUnit.Assert.areEqual("y", System.Array.getItem(l, 1, System.String));
+        },
+        iReadOnlyListCountWorks: function () {
+            var l = new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(["x", "y", "z"], System.String));
+            Bridge.Test.NUnit.Assert.areEqual(3, System.Array.getCount(l, System.String));
+        },
+        iReadOnlyListGetEnumeratorWorks: function () {
+            var l = Bridge.cast(new (System.Collections.ObjectModel.ReadOnlyCollection$1(System.String))(System.Array.init(["x", "y"], System.String)), System.Collections.Generic.IReadOnlyList$1(System.String));
+            var e = Bridge.getEnumerator(l, System.String);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("y", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.false(e.System$Collections$IEnumerator$moveNext());
         }
     });
 

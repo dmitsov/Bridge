@@ -7695,11 +7695,11 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true$1(System.Array.contains(interfaces, System.Collections.Generic.IReadOnlyCollection$1(System.Object), Function), "Interfaces should contain IReadOnlyCollection");
             Bridge.Test.NUnit.Assert.true$1(System.Array.contains(interfaces, System.Collections.IEnumerable, Function), "Interfaces should contain IEnumerable");
         },
-        arrayImplementsIReadOnlyList: function () {
-            Bridge.Test.NUnit.Assert.true(Bridge.is(System.Array.init(1, 0, System.Int32), System.Collections.Generic.IReadOnlyList$1(System.Int32)));
-        },
         customClassThatShouldImplementIReadOnlyListDoesSo: function () {
             Bridge.Test.NUnit.Assert.true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.MyList(System.Array.init(0, null, System.String)), System.Collections.Generic.IReadOnlyList$1(System.String)));
+        },
+        arrayImplementsIReadOnlyList: function () {
+            Bridge.Test.NUnit.Assert.true(Bridge.is(System.Array.init(1, 0, System.Int32), System.Collections.Generic.IReadOnlyList$1(System.Int32)));
         },
         arrayCastToIReadOnlyListGetItemWorks: function () {
             var l = System.Array.init(["x", "y", "z"], System.String);
@@ -8440,6 +8440,8 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IList$1(System.Int32)), "is IList<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.ICollection$1(System.Int32)), "is ICollection<int> should be true");
             Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IEnumerable$1(System.Int32)), "is IEnumerable<int> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IReadOnlyCollection$1(System.Int32)), "is IReadOnlyCollection<int> should be true");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.is(list, System.Collections.Generic.IReadOnlyList$1(System.Int32)), "is IReadOnlyList<int> should be true");
         },
         defaultConstructorWorks: function () {
             var l = new (System.Collections.Generic.List$1(System.Int32))();
@@ -8803,6 +8805,36 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             Bridge.Test.NUnit.Assert.false(Bridge.referenceEquals(l, actual));
             Bridge.Test.NUnit.Assert.true(Bridge.is(actual, Array));
             Bridge.Test.NUnit.Assert.areDeepEqual(System.Array.init(["a", "b"], System.String), actual);
+        },
+        iReadOnlyCollectionCountWorks: function () {
+            var l = $asm.$.Bridge.ClientTest.Collections.Generic.ListTests.f56(new (System.Collections.Generic.List$1(System.String))());
+            Bridge.Test.NUnit.Assert.areEqual(3, System.Array.getCount(l, System.String));
+        },
+        iReadOnlyCollectionGetEnumeratorWorks: function () {
+            var l = Bridge.cast($asm.$.Bridge.ClientTest.Collections.Generic.ListTests.f57(new (System.Collections.Generic.List$1(System.String))()), System.Collections.Generic.IReadOnlyCollection$1(System.String));
+            var e = Bridge.getEnumerator(l, System.String);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("y", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.false(e.System$Collections$IEnumerator$moveNext());
+        },
+        iReadOnlyListIndexingWorks: function () {
+            var l = $asm.$.Bridge.ClientTest.Collections.Generic.ListTests.f58(new (System.Collections.Generic.List$1(System.String))());
+            Bridge.Test.NUnit.Assert.areEqual("y", System.Array.getItem(l, 1, System.String));
+        },
+        iReadOnlyListCountWorks: function () {
+            var l = $asm.$.Bridge.ClientTest.Collections.Generic.ListTests.f59(new (System.Collections.Generic.List$1(System.String))());
+            Bridge.Test.NUnit.Assert.areEqual(3, System.Array.getCount(l, System.String));
+        },
+        iReadOnlyListGetEnumeratorWorks: function () {
+            var l = Bridge.cast($asm.$.Bridge.ClientTest.Collections.Generic.ListTests.f60(new (System.Collections.Generic.List$1(System.String))()), System.Collections.Generic.IReadOnlyList$1(System.String));
+            var e = Bridge.getEnumerator(l, System.String);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("x", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.true(e.System$Collections$IEnumerator$moveNext());
+            Bridge.Test.NUnit.Assert.areEqual("y", e[Bridge.geti(e, "System$Collections$Generic$IEnumerator$1$System$String$Current$1", "Current$1")]);
+            Bridge.Test.NUnit.Assert.false(e.System$Collections$IEnumerator$moveNext());
         }
     });
 
@@ -9153,6 +9185,34 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
             _o109.add("y");
             _o109.add("z");
             return _o109;
+        },
+        f56: function (_o110) {
+            _o110.add("x");
+            _o110.add("y");
+            _o110.add("z");
+            return _o110;
+        },
+        f57: function (_o111) {
+            _o111.add("x");
+            _o111.add("y");
+            return _o111;
+        },
+        f58: function (_o112) {
+            _o112.add("x");
+            _o112.add("y");
+            _o112.add("z");
+            return _o112;
+        },
+        f59: function (_o113) {
+            _o113.add("x");
+            _o113.add("y");
+            _o113.add("z");
+            return _o113;
+        },
+        f60: function (_o114) {
+            _o114.add("x");
+            _o114.add("y");
+            return _o114;
         }
     });
 

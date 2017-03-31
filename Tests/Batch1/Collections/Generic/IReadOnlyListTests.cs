@@ -93,15 +93,15 @@ namespace Bridge.ClientTest.Collections.Generic
         }
 
         [Test]
-        public void ArrayImplementsIReadOnlyList()
-        {
-            Assert.True((object)new int[1] is IReadOnlyList<int>);
-        }
-
-        [Test]
         public void CustomClassThatShouldImplementIReadOnlyListDoesSo()
         {
             Assert.True((object)new MyList(new string[0]) is IReadOnlyList<string>);
+        }
+
+        [Test]
+        public void ArrayImplementsIReadOnlyList()
+        {
+            Assert.True((object)new int[1] is IReadOnlyList<int>);
         }
 
         [Test]

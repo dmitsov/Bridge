@@ -10225,7 +10225,8 @@ Bridge.Class.addExtend(System.Boolean, [System.IComparable$1(System.Boolean), Sy
                 type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.IEnumerable$1") ||
                 type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.ICollection$1") ||
                 type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.IList$1") ||
-                type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.IReadOnlyCollection$1")) {
+                type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.IReadOnlyCollection$1") ||
+                type.$$name && System.String.startsWith(type.$$name, "System.Collections.Generic.IReadOnlyList$1")) {
                 return true;
             }
 

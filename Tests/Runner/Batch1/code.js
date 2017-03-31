@@ -7651,6 +7651,90 @@ Bridge.assembly("Bridge.ClientTest", {"Bridge.ClientTest.Batch1.Reflection.Resou
         }
     });
 
+    Bridge.define("Bridge.ClientTest.Collections.Generic.IReadOnlyListTests", {
+        typePropertiesAreCorrect: function () {
+            Bridge.Test.NUnit.Assert.areEqual$1("System.Collections.Generic.IReadOnlyList`1[[System.Object, mscorlib]]", Bridge.Reflection.getTypeFullName(System.Collections.Generic.IReadOnlyList$1(System.Object)), "FullName should be correct");
+            Bridge.Test.NUnit.Assert.true$1(Bridge.Reflection.isInterface(System.Collections.Generic.IReadOnlyList$1(System.Object)), "IsInterface should be true");
+
+            var interfaces = Bridge.Reflection.getInterfaces(System.Collections.Generic.IReadOnlyList$1(System.Object));
+            Bridge.Test.NUnit.Assert.areEqual$1(3, interfaces.length, "Interfaces length");
+            Bridge.Test.NUnit.Assert.true$1(System.Array.contains(interfaces, System.Collections.Generic.IEnumerable$1(System.Object), Function), "Interfaces should contain IEnumerable<object>");
+            Bridge.Test.NUnit.Assert.true$1(System.Array.contains(interfaces, System.Collections.Generic.IReadOnlyCollection$1(System.Object), Function), "Interfaces should contain IReadOnlyCollection");
+            Bridge.Test.NUnit.Assert.true$1(System.Array.contains(interfaces, System.Collections.IEnumerable, Function), "Interfaces should contain IEnumerable");
+        },
+        arrayImplementsIReadOnlyList: function () {
+            Bridge.Test.NUnit.Assert.true(Bridge.is(System.Array.init(1, 0, System.Int32), System.Collections.Generic.IReadOnlyList$1(System.Int32)));
+        },
+        customClassThatShouldImplementIReadOnlyListDoesSo: function () {
+            Bridge.Test.NUnit.Assert.true(Bridge.is(new Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.MyList(System.Array.init(0, null, System.String)), System.Collections.Generic.IReadOnlyList$1(System.String)));
+        },
+        arrayCastToIReadOnlyListGetItemWorks: function () {
+            var l = System.Array.init(["x", "y", "z"], System.String);
+            Bridge.Test.NUnit.Assert.areEqual("y", System.Array.getItem(l, 1, System.String));
+        },
+        classImplementingIReadOnlyListGetItemWorks: function () {
+            var l = new Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.MyList(System.Array.init(["x", "y", "z"], System.String));
+            Bridge.Test.NUnit.Assert.areEqual("y", l.getItem(1));
+        },
+        classImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks: function () {
+            var l = new Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.MyList(System.Array.init(["x", "y", "z"], System.String));
+            Bridge.Test.NUnit.Assert.areEqual("y", System.Array.getItem(l, 1, System.String));
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.C", {
+        _i: 0,
+        ctor: function (i) {
+            this.$initialize();
+            this._i = i;
+        },
+        equals: function (o) {
+            return Bridge.is(o, Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.C) && this._i === Bridge.cast(o, Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.C)._i;
+        },
+        getHashCode: function () {
+            return this._i;
+        }
+    });
+
+    Bridge.define("Bridge.ClientTest.Collections.Generic.IReadOnlyListTests.MyList", {
+        inherits: [System.Collections.Generic.IReadOnlyList$1(System.String)],
+        config: {
+            properties: {
+                Items: null,
+                Count: {
+                    get: function () {
+                        return this.Items.Count;
+                    }
+                }
+            },
+            alias: [
+            "getEnumerator", "System$Collections$Generic$IEnumerable$1$System$String$getEnumerator",
+            "Count", "System$Collections$Generic$IReadOnlyCollection$1$System$String$Count",
+            "getItem", "System$Collections$Generic$IReadOnlyList$1$System$String$getItem",
+            "setItem", "System$Collections$Generic$IReadOnlyList$1$System$String$setItem"
+            ]
+        },
+        ctor: function (items) {
+            this.$initialize();
+            this.Items = new (System.Collections.Generic.List$1(System.String))(items);
+        },
+        getItem: function (index) {
+            return this.Items.getItem(index);
+        },
+        setItem: function (index, value) {
+            this.Items.setItem(index, value);
+        },
+        System$Collections$IEnumerable$getEnumerator: function () {
+            return this.getEnumerator();
+        },
+        getEnumerator: function () {
+            return this.Items.getEnumerator();
+        },
+        contains: function (item) {
+            return this.Items.contains(item);
+        }
+    });
+
     Bridge.define("Bridge.ClientTest.Collections.Generic.IteratorBlockTests", {
         assertEqual: function (actual, expected, message) {
             if (message === void 0) { message = null; }

@@ -283,6 +283,12 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
             QUnit.test("IReadOnlyDictionary - ValuesWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.valuesWorks);
             QUnit.test("IReadOnlyDictionary - ContainsKeyWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.containsKeyWorks);
             QUnit.test("IReadOnlyDictionary - TryGetValueWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyDictionaryTests.tryGetValueWorks);
+            QUnit.test("IReadOnlyList - TypePropertiesAreCorrect", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.typePropertiesAreCorrect);
+            QUnit.test("IReadOnlyList - ArrayImplementsIReadOnlyList", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.arrayImplementsIReadOnlyList);
+            QUnit.test("IReadOnlyList - CustomClassThatShouldImplementIReadOnlyListDoesSo", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.customClassThatShouldImplementIReadOnlyListDoesSo);
+            QUnit.test("IReadOnlyList - ArrayCastToIReadOnlyListGetItemWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.arrayCastToIReadOnlyListGetItemWorks);
+            QUnit.test("IReadOnlyList - ClassImplementingIReadOnlyListGetItemWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.classImplementingIReadOnlyListGetItemWorks);
+            QUnit.test("IReadOnlyList - ClassImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests.classImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks);
             QUnit.test("IteratorBlock - TypeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.typeReturnedByIteratorBlockReturningIEnumeratorImplementsThatInterfaceAndIDisposable);
             QUnit.test("IteratorBlock - EnumeratingIEnumeratorIteratorToEndWorks", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.enumeratingIEnumeratorIteratorToEndWorks);
             QUnit.test("IteratorBlock - PrematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks", Bridge.Test.Runtime.BridgeClientTestRunner.IteratorBlockTests.prematureDisposalOfIEnumeratorIteratorExecutesFinallyBlocks);
@@ -12708,6 +12714,65 @@ Bridge.assembly("Bridge.Test.Bridge.ClientTest", function ($asm, globals) {
                     project: "Batch1",
                     className: "Bridge.ClientTest.Collections.Generic.IReadOnlyDictionaryTests",
                     file: "Batch1\\Collections\\Generic\\IReadOnlyDictionaryTests.cs"
+                } );
+            }
+            return this.context;
+        }
+    });
+
+    Bridge.define("Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests", {
+        inherits: [Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests)],
+        statics: {
+            typePropertiesAreCorrect: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "TypePropertiesAreCorrect()",
+                    line: "82"
+                } ));
+                t.Fixture.typePropertiesAreCorrect();
+            },
+            arrayImplementsIReadOnlyList: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ArrayImplementsIReadOnlyList()",
+                    line: "95"
+                } ));
+                t.Fixture.arrayImplementsIReadOnlyList();
+            },
+            customClassThatShouldImplementIReadOnlyListDoesSo: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "CustomClassThatShouldImplementIReadOnlyListDoesSo()",
+                    line: "101"
+                } ));
+                t.Fixture.customClassThatShouldImplementIReadOnlyListDoesSo();
+            },
+            arrayCastToIReadOnlyListGetItemWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ArrayCastToIReadOnlyListGetItemWorks()",
+                    line: "107"
+                } ));
+                t.Fixture.arrayCastToIReadOnlyListGetItemWorks();
+            },
+            classImplementingIReadOnlyListGetItemWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ClassImplementingIReadOnlyListGetItemWorks()",
+                    line: "114"
+                } ));
+                t.Fixture.classImplementingIReadOnlyListGetItemWorks();
+            },
+            classImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks: function (assert) {
+                var t = Bridge.Test.Runtime.TestFixture$1(Bridge.ClientTest.Collections.Generic.IReadOnlyListTests).beforeTest(true, assert, Bridge.Test.Runtime.BridgeClientTestRunner.IReadOnlyListTests, void 0, Bridge.merge(new Bridge.Test.Runtime.TestContext(), {
+                    method: "ClassImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks()",
+                    line: "121"
+                } ));
+                t.Fixture.classImplementingIReadOnlyListCastToIReadOnlyListGetItemWorks();
+            }
+        },
+        context: null,
+        getContext: function () {
+            if (this.context == null) {
+                this.context = Bridge.merge(new Bridge.Test.Runtime.FixtureContext(), {
+                    project: "Batch1",
+                    className: "Bridge.ClientTest.Collections.Generic.IReadOnlyListTests",
+                    file: "Batch1\\Collections\\Generic\\IReadOnlyListTests.cs"
                 } );
             }
             return this.context;

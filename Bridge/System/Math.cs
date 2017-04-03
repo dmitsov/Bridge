@@ -82,8 +82,8 @@ namespace System
         [Template("Bridge.Math.round({d}, 0, 6)")]
         public static extern double Round(double d);
 
-		[Template("Bridge.Math.round({d}, 0, 6)")]
-		public static extern float Round(float f);
+        [Template("Bridge.Math.round({d}, 0, 6)")]
+        public static extern float Round(float f);
 
         [Template("Math.round({d})")]
         public static extern double JsRound(double d);
@@ -103,8 +103,8 @@ namespace System
         [Template("Bridge.Math.round({d}, 0, {method})")]
         public static extern double Round(double d, MidpointRounding method);
 
-		[Template("Bridge.Math.round({d}, 0, {method})")]
-		public static extern float Round(float f, MidpointRounding method);
+        [Template("Bridge.Math.round({d}, 0, {method})")]
+        public static extern float Round(float f, MidpointRounding method);
 
         [Template("System.Decimal.toDecimalPlaces({d}, {digits}, {method})")]
         public static extern decimal Round(decimal d, int digits, MidpointRounding method);

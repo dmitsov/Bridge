@@ -26,10 +26,10 @@ namespace System
 
         public static extern int Max(params uint[] values);
 
-        public static extern double Max(params double[] values);
-
 		public static extern float Max(params float[] values);
 
+		public static extern double Max(params double[] values);
+	
         [Template("System.Int64.max({*values})")]
         public static extern long Max(params long[] values);
 
@@ -43,9 +43,9 @@ namespace System
 
         public static extern int Min(params uint[] values);
 
-        public static extern double Min(params double[] values);
+        public static extern float Min(params float[] value);
 
-		public static extern float Min(params float[] value);
+        public static extern double Min(params double[] values);
 
         [Template("System.Int64.min({*values})")]
         public static extern long Min(params long[] values);
@@ -86,7 +86,7 @@ namespace System
         [Template("Math.round({d})")]
         public static extern double JsRound(double d);
 
-        [Template("Bridge.Decimal.toDecimalPlaces({d}, {digits}, 6)")]
+        [Template("System.Decimal.toDecimalPlaces({d}, {digits}, 6)")]
         public static extern decimal Round(decimal d, int digits);
 
         [Template("Bridge.Math.round({d}, {digits}, 6)")]
@@ -123,8 +123,11 @@ namespace System
         [Template("Bridge.Math.log({x})")]
         public static extern double Log(double x);
 
-        [Template("{x}.log({logBase})")]
-        public static extern decimal Log(decimal x, decimal logBase);
+        [Template("Bridge.Math.logWithBase({x}, {logBase})")]
+        public static extern double Log(double x, double logBase);
+
+        [Template("Bridge.Math.logWithBase({x}, 10.0)")]
+        public static extern double Log10(double x);
 
         [Template("{x}.pow({y})")]
         public static extern decimal Pow(decimal x, decimal y);
@@ -188,13 +191,13 @@ namespace System
         [Template("System.Int64.divRem({a}, {b}, {result})")]
         public static extern long DivRem(long a, long b, out long result);
 
-		[Template("Bridge.Math.sinh({value})")]
-         public static extern double Sinh(double value);
+        [Template("Bridge.Math.sinh({value})")]
+        public static extern double Sinh(double value);
 
-         [Template("Bridge.Math.cosh({value})")]
-         public static extern double Cosh(double value);
+        [Template("Bridge.Math.cosh({value})")]
+        public static extern double Cosh(double value);
 
-         [Template("Bridge.Math.tanh({value})")]
-         public static extern double Tanh(double value);
-	}
+        [Template("Bridge.Math.tanh({value})")]
+        public static extern double Tanh(double value);
+    }
 }

@@ -26,10 +26,10 @@ namespace System
 
         public static extern int Max(params uint[] values);
 
-		public static extern float Max(params float[] values);
+        public static extern float Max(params float[] values);
 
-		public static extern double Max(params double[] values);
-	
+        public static extern double Max(params double[] values);
+
         [Template("System.Int64.max({*values})")]
         public static extern long Max(params long[] values);
 
@@ -66,6 +66,7 @@ namespace System
         [Name("ceil")]
         public static extern double Ceiling(double d);
 
+        [Name("ceil")]
         public static extern float Ceiling(float f);
 
         public static extern double Floor(double x);
@@ -81,7 +82,8 @@ namespace System
         [Template("Bridge.Math.round({d}, 0, 6)")]
         public static extern double Round(double d);
 
-        public static extern float Round(float f);
+		[Template("Bridge.Math.round({d}, 0, 6)")]
+		public static extern float Round(float f);
 
         [Template("Math.round({d})")]
         public static extern double JsRound(double d);
@@ -92,6 +94,7 @@ namespace System
         [Template("Bridge.Math.round({d}, {digits}, 6)")]
         public static extern double Round(double d, int digits);
 
+        [Template("Bridge.Math.round({d}, {digits}, 6)")]
         public static extern float Round(float f, int digits);
 
         [Template("System.Decimal.round({d}, {method})")]
@@ -100,7 +103,8 @@ namespace System
         [Template("Bridge.Math.round({d}, 0, {method})")]
         public static extern double Round(double d, MidpointRounding method);
 
-        public static extern float Round(float f, MidpointRounding method);
+		[Template("Bridge.Math.round({d}, 0, {method})")]
+		public static extern float Round(float f, MidpointRounding method);
 
         [Template("System.Decimal.toDecimalPlaces({d}, {digits}, {method})")]
         public static extern decimal Round(decimal d, int digits, MidpointRounding method);
@@ -108,6 +112,7 @@ namespace System
         [Template("Bridge.Math.round({d}, {digits}, {method})")]
         public static extern double Round(double d, int digits, MidpointRounding method);
 
+        [Template("Bridge.Math.round({d}, {digits}, {method})")]
         public static extern float Round(float f, int digits, MidpointRounding method);
 
         [Template("{x} - ({y} * Math.round({x} / {y}))")]

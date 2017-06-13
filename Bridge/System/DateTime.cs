@@ -45,6 +45,9 @@ namespace System
         [Template("new Date({year}, {month} - 1, {day}, {hours}, {minutes}, {seconds})")]
         public extern DateTime(int year, int month, int day, int hours, int minutes, int seconds);
 
+        [Template("new Date({year}, {month} - 1, {day}, {hours}, {minutes}, {seconds})")]
+        public extern DateTime(int year, int month, int day, int hours, int minutes, int seconds, DateTimeKind kind); //TODO: Actually implement.
+
         [Template("new Date({year}, {month} - 1, {day}, {hours}, {minutes}, {seconds}, {milliseconds})")]
         public extern DateTime(int year, int month, int day, int hours, int minutes, int seconds, int milliseconds);
 

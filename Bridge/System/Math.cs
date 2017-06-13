@@ -14,6 +14,8 @@ namespace System
 
         public static extern int Abs(int x);
 
+        public static extern double Abs(float x);
+
         public static extern double Abs(double x);
 
         [Template("{l}.abs()")]
@@ -289,6 +291,9 @@ namespace System
 
         [Template("{d}.trunc()")]
         public static extern decimal Truncate(decimal d);
+
+        [Template("Bridge.Int.sign({value})")]
+        public static extern int Sign(float value);
 
         [Template("Bridge.Int.sign({value})")]
         public static extern int Sign(double value);

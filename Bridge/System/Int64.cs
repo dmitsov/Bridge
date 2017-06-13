@@ -20,6 +20,9 @@ namespace System
         [Template("System.Int64.tryParse({s}, {result})")]
         public static extern bool TryParse(string s, out long result);
 
+        [Template("System.Int64.parse(System.Decimal({s}, {provider}).toString())")]
+        public static extern long Parse(string s, IFormatProvider provider);
+
         public extern string ToString(int radix);
 
         public extern string Format(string format);

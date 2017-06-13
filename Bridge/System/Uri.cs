@@ -10,6 +10,12 @@ namespace System
     {
         public extern Uri(string uriString);
 
+        [Template("new System.Uri.$ctor1({baseUri}, {relativeUri})")]
+        public extern Uri(Uri baseUri, string relativeUri);
+
+        [Template("encodeURIComponent({str})")]
+        public extern static string EscapeDataString(string str);
+
         public extern string AbsoluteUri
         {
             [Template("getAbsoluteUri()")]

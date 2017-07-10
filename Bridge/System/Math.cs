@@ -14,7 +14,7 @@ namespace System
 
         public static extern int Abs(int x);
 
-        public static extern double Abs(float x);
+        public static extern float Abs(float x);
 
         public static extern double Abs(double x);
 

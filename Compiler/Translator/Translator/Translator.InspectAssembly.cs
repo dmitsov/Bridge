@@ -166,13 +166,9 @@ namespace Bridge.Translator
 
                 string key = BridgeTypes.GetTypeDefinitionKey(type);
 
-<<<<<<< HEAD
-                if (this.TypeDefinitions.ContainsKey(key) || this.BridgeTypes.ContainsKey(key))
-=======
                 BridgeType duplicateBridgeType = null;
 
                 if (this.BridgeTypes.TryGetValue(key, out duplicateBridgeType))
->>>>>>> master
                 {
                     var duplicate = duplicateBridgeType.TypeDefinition;
 
@@ -187,11 +183,7 @@ namespace Bridge.Translator
                     throw new System.InvalidOperationException(message);
                 }
 
-<<<<<<< HEAD
-                this.TypeDefinitions.Add(BridgeTypes.GetTypeDefinitionKey(type), type);
-=======
                 this.TypeDefinitions.Add(key, type);
->>>>>>> master
 
                 this.BridgeTypes.Add(key, new BridgeType(key)
                 {

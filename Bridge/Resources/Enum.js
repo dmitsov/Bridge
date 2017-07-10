@@ -88,6 +88,12 @@
             return null;
         },
 
+        toStringFn: function(type) {
+            return function(value) {
+                return System.Enum.toString(type, value);
+            };
+        },
+
         toString: function (enumType, value, forceFlags) {
             if (arguments.length === 0) {
                 return "System.Enum";
@@ -224,7 +230,8 @@
         },
 
         hasFlag: function (value, flag) {
-            return !!(value & flag);
+            flag = Bridge.unbox(flag, true);
+            return flag === 0 || !!(value & flag);
         },
 
         isDefined: function (enumType, value) {
